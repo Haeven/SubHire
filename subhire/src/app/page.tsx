@@ -5,7 +5,7 @@ import Link from "next/link"
  export default function Home() {
   return (
     <section className={styles.homepage}>
-      <div className="container px-4 sm:px-6 m-auto ml-8">
+      <div className="container px-4 sm:px-6 m-auto ml-4">
         <div className="grid gap-6 sm:grid-cols-[1fr,1fr] lg:grid-cols-[1fr,400px] xl:grid-cols-[1fr,600px]">
           {/* <img
             alt=""
