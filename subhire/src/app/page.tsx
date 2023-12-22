@@ -4,26 +4,26 @@ import Link from "next/link"
 
  export default function Home() {
   return (
-    <section className="w-full py-12">
-      <div className="container px-4 sm:px-6">
+    <section className={styles.homepage}>
+      <div className="container px-4 sm:px-6 m-auto ml-8">
         <div className="grid gap-6 sm:grid-cols-[1fr,1fr] lg:grid-cols-[1fr,400px] xl:grid-cols-[1fr,600px]">
-          <img
-            alt="SubHire"
+          {/* <img
+            alt=""
             className="mx-auto aspect-video overflow-hidden rounded-xl object-bottom sm:w-full lg:order-last lg:aspect-square"
             height="550"
             src="/placeholder.svg"
             width="550"
-          />
+          /> */}
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tighter">
                 Welcome to SubHire
               </h1>
               <p className="max-w-[600px] text-gray-500 text-lg sm:text-xl md:text-2xl lg:text-xl dark:text-gray-400">
-                The platform to meet all your subcontracting needs.
+                The platform to meet all your sub-contracting needs.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-2 min-[300px] md:min-[400px]">
+            <div className="flex flex-col sm:flex-row gap-2 min-[300px] md:min-[400px] gap-4">
               <Link
                 className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-6 sm:px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
                 href="#"

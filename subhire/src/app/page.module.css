@@ -7,6 +7,11 @@
   min-height: 100vh;
 }
 
+.homepage {
+  height: 100vh;
+  display: flex;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
@@ -26,10 +31,15 @@
 }
 
 /* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
+@media (min-width: 401px) and (max-width: 80px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
   }
+
+  .homepage {
+    width: 500px !important; 
+  }
+
 }
 
 @media (prefers-color-scheme: dark) {
