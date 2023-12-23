@@ -20,7 +20,7 @@ import Link from "next/link"
                 Welcome to Sub<span style={{color:'#0367fd'}}>Hire</span>.
               </h1>
               <p className="max-w-[600px] text-gray-500 text-lg sm:text-xl md:text-2xl lg:text-xl dark:text-gray-400">
-                The platform to meet all your sub-contracting needs.
+                The AI-powered platform helping you find and hire the best subcontracters.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-2 min-[300px] md:min-[400px] gap-4">
