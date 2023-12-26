@@ -1,6 +1,6 @@
 import * as React from "react"
  
-import { Button } from "../button/AppButton"
+import { Button } from "../button"
 import {
   Card,
   CardContent,
@@ -9,15 +9,15 @@ import {
   CardHeader,
   CardTitle,
 } from "./index"
-import { Input } from "../input/Input"
-import { Label } from "../label/Label"
+import { Input } from "../input"
+import { Label } from "../label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../select/Select"
+} from "../select"
  
 export function AppCard() {
   return (

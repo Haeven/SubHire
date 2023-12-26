@@ -23,7 +23,7 @@ import {
 const SIDEBAR_PAGE_BUTTONS = [
   { name: "Chats", icon: BiMessageSquareDetail, content: "chats" },
   { name: "Add Contact", icon: BiUser, content: "addcontact" },//TODO: Make Add Contact page show list of contacts before search input
-  { name: "Settings", icon: FiSettings, content: "Settings" },
+  { name: "Settings", icon: FiSettings, content: "settings" },
 ];
 
 interface SidebarProps {}
@@ -36,9 +36,10 @@ const Sidebar = () => {
   const dispatch = useAppDispatch();
 
   const sidebarBtnHandler = (content: any) => {
+    console.log(content)
     content = content.replace(" ", "");
 
-    if (content === "Settings") {
+    if (content === "settings") {
       dispatch(showUserProfile({ userProfileData: currentUser }));
       return;
     }
@@ -57,7 +58,7 @@ const Sidebar = () => {
     <>
       <nav className="relative hidden p-3 py-4 w-fit bg-secondary md:flex md:flex-col gap-4 pt-10">
         <button
-          onClick={() => sidebarBtnHandler("Settings")}
+          onClick={() => sidebarBtnHandler("settings")}
           className="text relative group flex justify-center gap-2 items-center px-4 border-b border-main pb-4"
         >
           <ProfilePicture
@@ -76,11 +77,11 @@ const Sidebar = () => {
                 className={`${
                   sidebarContent === obj.content &&
                   "bg-muted-light/5 dark:bg-muted-dark/5"
-                }  relative group z-10 py-3 px-3`}
+                }  relative group z-10 py-3 px-3 text-center justify-center`}
                 key={obj.content}
                 onClick={() => {navigator.vibrate(1000); sidebarBtnHandler(obj.content);}}
               >
-                <Icon className={` text-muted text-2xl`} />
+                <Icon className={`text-center justify-center text-muted text-2xl`} />
                 < AppTooltip tip={obj.name} position="right" />
                 {sidebarContent === obj.content && (
                   <div className="p-0.5 h-10 w-1 -left-3 top-1/2 -translate-y-1/2 absolute bg-primary-main rounded-full" />
@@ -93,7 +94,7 @@ const Sidebar = () => {
         <div className="absolute bottom-4 flex flex-col gap-1">
           <Button
             variant="ghost"
-            className="relative group z-10 py-3 px-3"
+            className="relative group z-10 py-3 px-3 "
             onClick={darkmodeClickHandler}
           >
             {darkmode ? (
@@ -132,6 +133,7 @@ const Sidebar = () => {
                 key={obj.content}
                 onClick={() => sidebarBtnHandler(obj.content)}
               >
+                {sidebarContent}
                 <Icon className={` text-muted text-2xl`} />
                 < AppTooltip tip={obj.name} position="top" />
                 {sidebarContent === obj.content && (

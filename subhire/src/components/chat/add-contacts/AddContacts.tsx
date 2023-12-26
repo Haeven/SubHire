@@ -10,7 +10,7 @@ import { User } from "../../../lib/interfaces";
 
 import AddContactModal from "./AddContactModal";
 import { changeSideContent } from "../../../lib/redux/reducers/sideContentReducer";
-import { Input } from "@/components/input/Input";
+import { Input } from "@/components/input";
 
 interface AddContactsProps {}
 

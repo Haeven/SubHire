@@ -11,7 +11,7 @@ import {
   googleLogin,
   emailLogin,
 } from "./userSlice";
-import { Input } from "@/components/input/Input";
+import { Input } from "@/components/input";
 
 interface SignInProps {
   setIsSigningIn: (state: boolean) => void;

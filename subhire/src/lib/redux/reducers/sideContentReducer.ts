@@ -24,7 +24,7 @@ const sideContentSlice = createSlice({
       state.content = action.payload.content;
     },
     showUserProfile: (state, action: PayloadAction<showUserProfileType>) => {
-      state.content = "profile";
+      state.content = "settings";
       state.userProfileData = action.payload.userProfileData;
     },
   },

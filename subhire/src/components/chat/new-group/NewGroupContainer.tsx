@@ -18,7 +18,7 @@ import { useAppDispatch, useAppSelector, useUploadImage } from "@/lib/hooks";
 import { changeSideContent } from "@/lib/redux/reducers/sideContentReducer";
 import useCreateGroup from "./useCreateGroup";
 import { BiPlus } from "react-icons/bi";
-import { Input } from "@/components/input/Input";
+import { Input } from "@/components/input";
 
 const NewGroupContainer = () => {
   const { user: currentUser } = useAppSelector(getUserState);
@@ -76,7 +76,7 @@ const NewGroupContainer = () => {
     setMembersID(newMembersID);
   };
 
-  const createGroupBtnHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  const createGroupBtnHandler = async (e: any) => {
     e.preventDefault();
 
     if (members.length < 2) {
@@ -217,7 +217,7 @@ const NewGroupContainer = () => {
   
       <Button
         disabled={isPending ? true : false}
-        onClick={createGroupBtnHandler}
+        onClick={(e) => createGroupBtnHandler(e)}
         className="mt-2"
       >
         {isPending ? "Creating Group..." : "Create Group"}

@@ -53,9 +53,9 @@ const SideContent = () => {
               <AddContacts />
             </motion.div>
           )}
-          {sidebarContent === "profile" && (
+          {sidebarContent === "settings" && (
             <motion.div
-              key="profile"
+              key="settings"
               className="absolute w-full h-full"
               variants={VARIANTS_MANAGER}
               exit="slide-from-right"
