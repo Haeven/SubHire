@@ -4,9 +4,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { MdSend } from "react-icons/md";
 import { RiImageAddLine } from "react-icons/ri";
 import { VscSmiley } from "react-icons/vsc";
-import { Modal, AppButton } from "../..";
+import { Modal, AppButton } from "@/components";
 import useSendMessage from "./useSendMessage";
-import { useUploadImage } from "../../../lib/hooks";
+import { useUploadImage } from "@/lib/hooks";
 
 interface ChatFormProps {
   editingMsgRef: any;
