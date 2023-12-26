@@ -1,6 +1,6 @@
 'use client';
-import { Sidebar, SideContent } from "@/components/features/sidebar";
-import { ChatBox } from "@/components/features/conversation";
+import { Sidebar, SideContent } from "@/components/chat/sidebar";
+import { ChatBox } from "@/components/chat/conversation";
 import { ErrorMsg } from "@/components";
 import { start_messaging_img } from "@/lib/assets/images";
 import { useAppSelector } from "@/lib/hooks";

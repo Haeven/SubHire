@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { userReducer } from "../../../../components/features/authentication";
-import chatReducer from "../../../../components/features/inbox/chatReducer";
-import { themeReducer } from "../../../../components/features/sidebar";
+import { userReducer } from "@/components/chat/authentication";
+import chatReducer from "@/components/chat/inbox/chatReducer";
+import { themeReducer } from "@/components/chat/sidebar";
 import { sideContentReducer } from "@/lib/redux/reducers";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/es/storage";

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { SignIn, SignUp } from "@/components/features/authentication";
+import { SignIn, SignUp } from "@/components/chat/authentication";
 import { VARIANTS_MANAGER } from "../../lib/redux/setup/variants-manager";
 
 interface AuthenticationProps {
