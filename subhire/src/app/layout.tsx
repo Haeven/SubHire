@@ -1,4 +1,4 @@
-import { lazy, StrictMode, Suspense, useEffect } from "react";
+import { StrictMode, Suspense, useEffect } from "react";
 // import { AnimatePresence, motion } from "framer-motion";
 import { useAppDispatch, useAppSelector, useLocalStorage } from "@/lib/hooks";
 import dynamic from 'next/dynamic'

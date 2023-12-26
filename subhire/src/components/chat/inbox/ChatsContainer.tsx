@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ErrorMsg, LoadingSpinner, AppButton, AppTooltip } from "@/components";
+import { ErrorMsg, LoadingSpinner, Button, AppTooltip } from "@/components";
 import { inbox_empty } from "@/lib/assets/images";
 
 import ChatList from "./ChatList";
@@ -43,8 +43,8 @@ const ChatsContainer = () => {
         <ul className="ml-auto flex gap-1">
           <li>
             {" "}
-            < AppButton
-              variant="transparent"
+            <Button
+              variant="ghost"
               className="relative group z-10 py-3 px-3"
               onClick={() =>
                 dispatch(changeSideContent({ content: "addcontact" }))
@@ -52,11 +52,11 @@ const ChatsContainer = () => {
             >
               <MdPersonAdd className="text-muted text-2xl" />
               < AppTooltip tip="New Contact" position="bottom" />
-            </ AppButton>
+            </Button>
           </li>
           <li>
-            < AppButton
-              variant="transparent"
+            <Button
+              variant="ghost"
               className="relative group z-10 py-3 px-3"
               onClick={() =>
                 dispatch(changeSideContent({ content: "new-group" }))
@@ -64,7 +64,7 @@ const ChatsContainer = () => {
             >
               <MdGroupAdd className="text-muted text-2xl" />
               < AppTooltip tip="New Team" position="bottom" />
-            </ AppButton>
+            </Button>
           </li>
         </ul>
       </header>

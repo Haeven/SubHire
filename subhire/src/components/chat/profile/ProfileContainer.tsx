@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector, useUploadImage } from "@/lib/hooks";
 import {
   Modal,
   AppTooltip,
-  AppButton,
+  Button,
   LoadingSpinner,
   ProfilePicture,
 } from "@/components";
@@ -37,10 +37,10 @@ const ProfileContainer = () => {
   const [showModal, setShowModal] = useState(false);
 
   const infoButtons = [
-    { icon: HiOutlineMail, text: user?.email || "fetching email..." },
+    { icon: HiOutlineMail, text: user?.email || "" },
     {
       icon: HiOutlineLocationMarker,
-      text: user?.location || "fetching location...",
+      text: user?.location || "",
     },
   ];
 
@@ -68,23 +68,23 @@ const ProfileContainer = () => {
   }, [imgURL]);
 
   return (
-    <aside className=" flex flex-col">
+    <aside className="flex flex-col items-center p-1 py-4 sm:p-4 h-full">
       <Modal setShowModal={setShowModal}>
         {showModal && (
           <ProfileEditForm currentUserInfo={user} setShowModal={setShowModal} />
         )}
       </Modal>
 
-      <main className="flex-col justify-center gap-4 p-1 py-6 sm:p-6">
-        <header>
-          < AppButton
-            variant="transparent"
+      {/* <main className="flex-col justify-center gap-4 p-1 py-6 sm:p-6"> */}
+        <header className="w-full">
+          <Button
+            variant="ghost"
             onClick={() => backBtnHandler("chats")}
             className="w-full flex gap-2"
           >
             <AiOutlineArrowLeft className="text-xl" />{" "}
             {isCurrentUser ? "Chats" : "Back"}
-          </ AppButton>
+          </Button>
         </header>
 
         <section className="flex flex-col items-center text-center p-4 px-8">
@@ -118,9 +118,9 @@ const ProfileContainer = () => {
             )}
           </div>
           <h2 className="text text-lg">
-            {user?.displayName || "fetching display name..."}
+            {user?.displayName || ""}
           </h2>
-          <p className="text-muted">{user?.bio || "fetching bio..."}</p>
+          <p className="text-muted">{user?.bio || ""}</p>
         </section>
 
         <section className="p-2 flex flex-col gap-4 border-t border-main">
@@ -128,27 +128,27 @@ const ProfileContainer = () => {
             {infoButtons.map((obj, i) => {
               const Icon = obj.icon;
               return (
-                < AppButton
-                  variant="transparent"
-                  className="relative group"
+                <Button
+                  variant="outline"
+                  className="relative group items-center justify-center"
                   onClick={() => copyToClipboard(obj.text as string)}
                   key={(obj.text as string) + i}
                 >
                   <Icon className="text-muted text-2xl" />
                   {obj.text}
                   < AppTooltip tip="Copy to clipboard" position="top" />
-                </ AppButton>
+                </Button>
               );
             })}
 
             {isCurrentUser && (
-              < AppButton onClick={() => setShowModal(true)} className="mt-2 text-center">
+              <Button onClick={() => setShowModal(true)} className="mt-2 text-center">
                 <CiEdit style={{color: 'black'}}/>
-              </ AppButton>
+              </Button>
             )}
           </div>
         </section>
-      </main>
+      {/* </main> */}
     </aside>
   );
 };

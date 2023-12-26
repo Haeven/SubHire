@@ -4,7 +4,7 @@ import {
   LoadingSpinner,
   Modal,
   ProfilePicture,
-  AppButton,
+  Button,
 } from "@/components";
 import { User } from "@/lib/interfaces";
 // import { doc, getDoc } from "firebase/firestore";
@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector, useUploadImage } from "@/lib/hooks";
 import { changeSideContent } from "@/lib/redux/reducers/sideContentReducer";
 import useCreateGroup from "./useCreateGroup";
 import { BiPlus } from "react-icons/bi";
+import { Input } from "@/components/input/Input";
 
 const NewGroupContainer = () => {
   const { user: currentUser } = useAppSelector(getUserState);
@@ -121,14 +122,14 @@ const NewGroupContainer = () => {
   </Modal>
   
   <header>
-    < AppButton
-      variant="transparent"
+    <Button
+      variant="ghost"
       onClick={cancelBtnHandler}
       className="w-full flex gap-2"
     >
       <AiOutlineArrowLeft className="text-xl" />
       Cancel
-    </ AppButton>
+    </Button>
   </header>
   
   <main>
@@ -166,14 +167,13 @@ const NewGroupContainer = () => {
           />
         </label>
       </div>
-      <InputForm
+      <Input
         className="w-44 p-0.5"
-        variant="underline"
-        state={groupName}
+        value={groupName}
         maxLength={30}
-        setState={setGroupName}
+        onChange={({target: {value}}) => setGroupName(value)}
         type={"text"}
-        placeholder={"Group Name"}
+        placeholder={"Team Name"}
       />
     </section>
   
@@ -182,13 +182,13 @@ const NewGroupContainer = () => {
         <h1 className="text text-lg">{`Members (${members?.length})`}</h1>
         <div className="ml-auto flex gap-1">
           {" "}
-          < AppButton
-            variant="transparent"
+          <Button
+            variant="ghost"
             className="relative group z-10 py-3 px-3"
             onClick={() => setShowModal(true)}
           >
             <MdPersonAdd className="text-muted text-2xl" />
-          </ AppButton>
+          </Button>
         </div>
       </div>
   
@@ -215,13 +215,13 @@ const NewGroupContainer = () => {
           ))}
       </ul>
   
-      < AppButton
+      <Button
         disabled={isPending ? true : false}
         onClick={createGroupBtnHandler}
         className="mt-2"
       >
         {isPending ? "Creating Group..." : "Create Group"}
-      </ AppButton>
+      </Button>
     </section>
   </main>
   </aside>;

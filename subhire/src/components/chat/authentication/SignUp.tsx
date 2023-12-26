@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from "react";
 
-import { InputForm, AppButton } from "@/components";
+import { InputForm, Button } from "@/components";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { getPendingMsg, makePendingMsg } from "@/toastSlice";
 import { clearUserStateErr, getUserState, signUp } from "./userSlice";
@@ -89,7 +89,7 @@ const SignUp = ({ setIsSigningIn }: SignUpProps) => {
       >
         {errorMsg}
       </p>
-      <InputForm
+      {/* <InputForm
         label="Email"
         type="email"
         state={email}
@@ -132,8 +132,8 @@ const SignUp = ({ setIsSigningIn }: SignUpProps) => {
         setStateFocus={setConfirmPwdFocus}
         isValid={validConfirmPwd}
         instruction="Should match the first password."
-      />
-      < AppButton
+      /> */}
+      <Button
         type="submit"
         disabled={
           !validEmail || !validDisplayName || !validConfirmPwd || pendingMsg
@@ -142,7 +142,7 @@ const SignUp = ({ setIsSigningIn }: SignUpProps) => {
         }
       >
         {status === "pending" ? "Signing up..." : "Sign up"}
-      </ AppButton>
+      </Button>
       <p className="text-muted text-sm">
         Already have an account?{" "}
         <button

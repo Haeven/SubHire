@@ -1,6 +1,6 @@
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
-import { ProfilePicture, AppButton } from "@/components";
+import { ProfilePicture, Button } from "@/components";
 import { User } from "@/lib/interfaces";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { getChatState, resetChat } from "../inbox/chatReducer";
@@ -32,13 +32,13 @@ const ChatHeader = ({ recipient }: ChatHeaderProps) => {
 
   return (
     <header className="border-b border-main w-full p-4  mb-auto bg-main duration-300 flex gap-2">
-      < AppButton
-        variant="transparent"
+      <Button
+        variant="ghost"
         onClick={handleBackBtn}
         className="md:hidden px-4"
       >
         <AiOutlineArrowLeft className="text-xl" />
-      </ AppButton>
+      </Button>
       <div className="flex items-center gap-4">
         <button disabled={isGroup ? true : false} onClick={profileClickHandler}>
           <ProfilePicture

@@ -1,4 +1,5 @@
-import { ProfilePicture, AppButton } from "@/components";
+
+import { ProfilePicture, Button } from "@/components";
 import React, { useEffect, useState } from "react";
 import { GroupChat, User, UserChatArray } from "@/lib/interfaces";
 import { getChatState } from "./chatReducer";
@@ -69,8 +70,8 @@ const ChatList = ({ chat, chatClickHandler }: ChatListProps): JSX.Element => {
   }, [chat[1].lastMessage?.message]);
 
   return (
-    < AppButton
-      variant="transparent"
+    <Button
+      variant="ghost"
       onClick={chatListClickHandler}
       className={`w-full p-2 ${
         chat[1].unread && "bg-muted-light/5 dark:bg-muted-dark/10"
@@ -106,7 +107,7 @@ const ChatList = ({ chat, chatClickHandler }: ChatListProps): JSX.Element => {
           </div>
         </div>
       )}
-    </ AppButton>
+    </Button>
   );
 };
 

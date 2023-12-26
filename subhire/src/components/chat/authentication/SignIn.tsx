@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 
-import { InputForm, AppButton } from "@/components";
+import { InputForm, Button } from "@/components";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { makePendingMsg } from "@/toastSlice";
 import {
@@ -11,6 +11,7 @@ import {
   googleLogin,
   emailLogin,
 } from "./userSlice";
+import { Input } from "@/components/input/Input";
 
 interface SignInProps {
   setIsSigningIn: (state: boolean) => void;
@@ -70,26 +71,24 @@ const SignIn = ({
         {errorMsg}
       </p>
 
-      <InputForm
-        label="Email"
+      <Input
         autoFocus={true}
         type="email"
-        state={email}
-        setState={setEmail}
+        value={email}
+        onChange={({target: {value}}) => setEmail(value)}
         placeholder="e.g example123@example.com"
       />
-      <InputForm
-        label="Password"
+      <Input
         type="password"
-        state={password}
-        setState={setPassword}
+        value={password}
+        onChange={({target: {value}}) => setPassword(value)}
         placeholder="*********"
       />
 
       {/* Keep me signed in button is not working yet */}
-      {/* < AppButton
+      {/* <Button
         onClick={() => setKeepSignedIn(!keepSignedIn)}
-        variant="transparent"
+        variant="ghost"
         type="button"
         className="flex flex-wrap gap-2 items-center "
       >
@@ -103,15 +102,15 @@ const SignIn = ({
           <AiOutlineCheck />
         </div>
         Keep me signed in
-      </ AppButton> */}
+      </Button> */}
 
-      < AppButton
+      <Button
         type="submit"
         className="mt-4"
         disabled={!email || !password || (status === "pending" && true)}
       >
         {status === "pending" ? "Signing in..." : "Sign in"}
-      </ AppButton>
+      </Button>
 
       <p className="text-muted text-sm">
         Don't have an account?{" "}
@@ -125,15 +124,15 @@ const SignIn = ({
       </p>
 
       <div className="flex flex-col gap-2 mt-4">
-        < AppButton
+        <Button
           type="button"
           onClick={handleGoogleLogin}
           disabled={status === "pending" && true}
           className="justify-center text-primary-tinted dark:text-primary-shaded"
-          variant="transparent"
+          variant="ghost"
         >
           Sign In With Google
-        </ AppButton>
+        </Button>
       </div>
     </form>
   );

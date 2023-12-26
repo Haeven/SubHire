@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AppButton, InputForm } from "@/components";
+import { Button, InputForm } from "@/components";
 import { editProfile } from "../authentication/userSlice";
 import { useAppDispatch } from "@/lib/hooks";
 import { User } from "@/lib/interfaces";
@@ -85,13 +85,13 @@ const ProfileEditForm = ({
         placeholder="e.g Earth"
         maxLength={30}
       />
-      < AppButton
+      <Button
         disabled={validDisplayName && bio && !isPending ? false : true}
         className="mt-2"
         type="submit"
       >
         {isPending ? "Saving..." : "Save"}
-      </ AppButton>
+      </Button>
     </form>
   );
 };

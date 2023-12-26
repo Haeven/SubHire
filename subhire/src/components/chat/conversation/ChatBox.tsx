@@ -3,7 +3,7 @@ import { memo, SyntheticEvent, useEffect, useRef, useState } from "react";
 
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { AnimatePresence, motion } from "framer-motion";
-import { ErrorMsg, LoadingSpinner, Modal, AppButton } from "@/components";
+import { ErrorMsg, LoadingSpinner, Modal, Button } from "@/components";
 
 import MessageBox from "./MessageBox";
 import ChatHeader from "./ChatHeader";
@@ -162,9 +162,9 @@ const ChatBox = ({ recipient }: ChatBoxProps) => {
                 exit={{ opacity: 0, x: "-50%" }}
                 className="absolute -top-3/4 left-1/2 z-10"
               >
-                < AppButton onClick={scrollDown} className="rounded-full px-2">
+                <Button onClick={scrollDown} className="rounded-full px-2">
                   <AiOutlineArrowDown className="text-xl text-white " />
-                </ AppButton>
+                </Button>
               </motion.div>
             )}
           </AnimatePresence>

@@ -1,114 +1,177 @@
 'use client';
-import { LegacyRef, useState } from "react";
-import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
+import * as React from "react"
+import * as LabelPrimitive from "@radix-ui/react-label"
+import { Slot } from "@radix-ui/react-slot"
+import {
+  Controller,
+  ControllerProps,
+  FieldPath,
+  FieldValues,
+  FormProvider,
+  useFormContext,
+} from "react-hook-form"
 
-interface InputFormProps {
-  state: string;
-  setState: (state: string) => void;
-  label?: string;
-  type: string;
-  placeholder: string;
-  instruction?: string;
-  ref?: LegacyRef<HTMLInputElement> | undefined;
-  isValid?: boolean;
-  isSmall?: boolean;
-  variant?: "underline" | "default";
-  stateFocus?: boolean;
-  maxLength?: number;
-  className?: string;
-  autoFocus?: boolean;
-  setStateFocus?: (state: boolean) => void;
+import { cn } from "@/lib/utils"
+import { Label } from "../label/Label"
+
+const Form = FormProvider
+
+type FormFieldContextValue<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+> = {
+  name: TName
 }
 
-const InputForm = ({
-  label,
-  instruction,
-  type,
-  placeholder,
-  ref = null,
-  isValid,
-  isSmall,
-  state,
-  setState,
-  className,
-  stateFocus,
-  autoFocus = false,
-  variant,
-  setStateFocus,
-  maxLength,
-}: InputFormProps) => {
-  const [inputType, setInputType] = useState(type);
-  const noSpaceLabel = label?.replace(/\s+/g, "");
+const FormFieldContext = React.createContext<FormFieldContextValue>(
+  {} as FormFieldContextValue
+)
 
-  const handleShowPass = (e: React.MouseEvent) => {
-    if (inputType === "password") {
-      setInputType("text");
-    } else {
-      setInputType("password");
-    }
-  };
+const FormField = <
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+>({
+  ...props
+}: ControllerProps<TFieldValues, TName>) => {
+  return (
+    <FormFieldContext.Provider value={{ name: props.name }}>
+      <Controller {...props} />
+    </FormFieldContext.Provider>
+  )
+}
 
-  const inputVariantClass =
-    variant === "underline" ? "border-b rounded-none px-0" : "border";
+const useFormField = () => {
+  const fieldContext = React.useContext(FormFieldContext)
+  const itemContext = React.useContext(FormItemContext)
+  const { getFieldState, formState } = useFormContext()
 
-  const inputSizeClass = isSmall ? "p-1" : "p-2";
+  const fieldState = getFieldState(fieldContext.name, formState)
 
-  const inputValidClass =
-    !isValid && state
-      ? instruction && "border-red-500"
-      : "border-muted dark:border-muted-dark hover:border-primary-main dark:hover:border-primary-main focus:border-primary-main";
+  if (!fieldContext) {
+    throw new Error("useFormField should be used within <FormField>")
+  }
+
+  const { id } = itemContext
+
+  return {
+    id,
+    name: fieldContext.name,
+    formItemId: `${id}-form-item`,
+    formDescriptionId: `${id}-form-item-description`,
+    formMessageId: `${id}-form-item-message`,
+    ...fieldState,
+  }
+}
+
+type FormItemContextValue = {
+  id: string
+}
+
+const FormItemContext = React.createContext<FormItemContextValue>(
+  {} as FormItemContextValue
+)
+
+const FormItem = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const id = React.useId()
 
   return (
-    <label
-      htmlFor={`${noSpaceLabel}-input`}
-      className="flex flex-col gap-2 relative"
+    <FormItemContext.Provider value={{ id }}>
+      <div ref={ref} className={cn("space-y-2", className)} {...props} />
+    </FormItemContext.Provider>
+  )
+})
+FormItem.displayName = "FormItem"
+
+const FormLabel = React.forwardRef<
+  React.ElementRef<typeof LabelPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
+>(({ className, ...props }, ref) => {
+  const { error, formItemId } = useFormField()
+
+  return (
+    <Label
+      ref={ref}
+      className={cn(error && "text-destructive", className)}
+      htmlFor={formItemId}
+      {...props}
+    />
+  )
+})
+FormLabel.displayName = "FormLabel"
+
+const FormControl = React.forwardRef<
+  React.ElementRef<typeof Slot>,
+  React.ComponentPropsWithoutRef<typeof Slot>
+>(({ ...props }, ref) => {
+  const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+
+  return (
+    <Slot
+      ref={ref}
+      id={formItemId}
+      aria-describedby={
+        !error
+          ? `${formDescriptionId}`
+          : `${formDescriptionId} ${formMessageId}`
+      }
+      aria-invalid={!!error}
+      {...props}
+    />
+  )
+})
+FormControl.displayName = "FormControl"
+
+const FormDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => {
+  const { formDescriptionId } = useFormField()
+
+  return (
+    <p
+      ref={ref}
+      id={formDescriptionId}
+      className={cn("text-[0.8rem] text-muted-foreground", className)}
+      {...props}
+    />
+  )
+})
+FormDescription.displayName = "FormDescription"
+
+const FormMessage = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, children, ...props }, ref) => {
+  const { error, formMessageId } = useFormField()
+  const body = error ? String(error?.message) : children
+
+  if (!body) {
+    return null
+  }
+
+  return (
+    <p
+      ref={ref}
+      id={formMessageId}
+      className={cn("text-[0.8rem] font-medium text-destructive", className)}
+      {...props}
     >
-      <div className="flex flex-wrap gap-2 items-center">
-        {label && <p className="text">{label}</p>}
-        {type === "password" ? (
-          <a className="text cursor-pointer" onClick={handleShowPass}>
-            {inputType === "password" ? (
-              <BsFillEyeSlashFill className="text-muted text-lg" />
-            ) : (
-              <BsFillEyeFill className="text-muted text-lg text-primary-main" />
-            )}
-          </a>
-        ) : (
-          ""
-        )}
-      </div>
+      {body}
+    </p>
+  )
+})
+FormMessage.displayName = "FormMessage"
 
-      <input
-        className={`${className} text-lg bg-transparent ${inputVariantClass} ${inputSizeClass} px-4 flex items-center rounded-xl outline-none duration-200 text ${inputValidClass}`}
-        minLength={1}
-        maxLength={maxLength}
-        autoFocus={autoFocus}
-        id={noSpaceLabel}
-        autoComplete="off"
-        type={inputType}
-        value={state}
-        ref={ref}
-        required
-        aria-invalid={isValid ? false : true}
-        aria-describedby={`${noSpaceLabel}-note`}
-        placeholder={placeholder}
-        onChange={(e) => setState && setState(e.target.value)}
-        onFocus={() => setStateFocus && setStateFocus(true)}
-        onBlur={() => setStateFocus && setStateFocus(false)}
-      />
-
-      <p
-        id={`${noSpaceLabel}-note`}
-        className={`text-muted text-sm gap-2 ${
-          stateFocus && state && !isValid
-            ? "visible block"
-            : "absolute invisible"
-        }`}
-      >
-        {instruction}
-      </p>
-    </label>
-  );
-};
-
-export default InputForm;
+export {
+  useFormField,
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormField,
+}

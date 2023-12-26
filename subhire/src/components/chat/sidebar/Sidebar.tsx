@@ -7,7 +7,7 @@ import {
 } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
 
-import { AppTooltip, AppButton, ProfilePicture } from "@/components";
+import { AppTooltip, Button, ProfilePicture } from "@/components";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { getThemeState, toggleDarkmode } from "./themeSlice";
@@ -71,8 +71,8 @@ const Sidebar = () => {
           {SIDEBAR_PAGE_BUTTONS.map((obj) => {
             const Icon = obj.icon;
             return (
-              < AppButton
-                variant="transparent"
+              <Button
+                variant="ghost"
                 className={`${
                   sidebarContent === obj.content &&
                   "bg-muted-light/5 dark:bg-muted-dark/5"
@@ -85,14 +85,14 @@ const Sidebar = () => {
                 {sidebarContent === obj.content && (
                   <div className="p-0.5 h-10 w-1 -left-3 top-1/2 -translate-y-1/2 absolute bg-primary-main rounded-full" />
                 )}
-              </ AppButton>
+              </Button>
             );
           })}
         </div>
 
         <div className="absolute bottom-4 flex flex-col gap-1">
-          < AppButton
-            variant="transparent"
+          <Button
+            variant="ghost"
             className="relative group z-10 py-3 px-3"
             onClick={darkmodeClickHandler}
           >
@@ -105,16 +105,16 @@ const Sidebar = () => {
               tip={darkmode ? "lightmode" : "darkmode"}
               position="right"
             ></ AppTooltip>
-          </ AppButton>
+          </Button>
 
-          < AppButton
-            variant="transparent"
+          <Button
+            variant="ghost"
             className="relative group z-10 py-3 px-3"
             onClick={handleSignOut}
           >
             <BiLogOut className="text-muted text-2xl" />
             < AppTooltip tip="logout" position="right" />
-          </ AppButton>
+          </Button>
         </div>
       </nav>
 
@@ -123,8 +123,8 @@ const Sidebar = () => {
           {SIDEBAR_PAGE_BUTTONS.map((obj) => {
             const Icon = obj.icon;
             return (
-              < AppButton
-                variant="transparent"
+              <Button
+                variant="ghost"
                 className={`${
                   sidebarContent === obj.content &&
                   "bg-muted-light/5 dark:bg-muted-dark/5"
@@ -137,7 +137,7 @@ const Sidebar = () => {
                 {sidebarContent === obj.content && (
                   <div className="p-0.5 h-1 w-10 left-1/2 -bottom-2 -translate-x-1/2 absolute bg-primary-main rounded-full" />
                 )}
-              </ AppButton>
+              </Button>
             );
           })}
         </div>

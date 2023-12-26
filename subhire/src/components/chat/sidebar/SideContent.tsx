@@ -38,21 +38,17 @@ const SideContent = () => {
               key="chats"
               className="absolute w-full h-full overflow-hidden"
               variants={VARIANTS_MANAGER}
-              initial="slide-from-left"
-              animate="slide-in"
               exit="slide-from-right"
-            >
+              >
               <ChatsContainer />
             </motion.div>
           )}
           {sidebarContent === "addcontact" && (
             <motion.div
-              key="add-contacts"
-              className="absolute w-full h-full overflow-hidden"
-              variants={VARIANTS_MANAGER}
-              initial="slide-from-left"
-              animate="slide-in"
-              exit="slide-from-right"
+            key="add-contacts"
+            className="absolute w-full h-full overflow-hidden"
+            variants={VARIANTS_MANAGER}
+            exit="slide-from-right"
             >
               <AddContacts />
             </motion.div>
@@ -62,10 +58,8 @@ const SideContent = () => {
               key="profile"
               className="absolute w-full h-full"
               variants={VARIANTS_MANAGER}
-              initial="slide-from-left"
-              animate="slide-in"
               exit="slide-from-right"
-            >
+              >
               <ProfileContainer />
             </motion.div>
           )}
@@ -86,8 +80,6 @@ const SideContent = () => {
               key="new-group"
               className="absolute w-full h-full overflow-y-scroll scrollbar-hide"
               variants={VARIANTS_MANAGER}
-              initial="slide-from-left"
-              animate="slide-in"
               exit="slide-from-right"
             >
               <NewGroupContainer />

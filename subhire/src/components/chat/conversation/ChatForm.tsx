@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { MdSend } from "react-icons/md";
 import { RiImageAddLine } from "react-icons/ri";
 import { VscSmiley } from "react-icons/vsc";
-import { Modal, AppButton } from "@/components";
+import { Modal, Button } from "@/components";
 import useSendMessage from "./useSendMessage";
 import { useUploadImage } from "@/lib/hooks";
 
@@ -101,20 +101,20 @@ const ChatForm = ({
           <div className="flex flex-col gap-2">
             <img alt="Chat" src={imgURL} className="w-64 rounded-xl" />
             <div className="flex flex-col gap-1 ">
-              < AppButton
+              <Button
                 onClick={handleSendImage}
                 className="py-1"
                 variant="contained"
               >
                 Send
-              </ AppButton>
-              < AppButton
+              </Button>
+              <Button
                 onClick={() => closeImageModal(true)}
                 className="justify-center py-1"
                 variant="outline"
               >
                 Cancel
-              </ AppButton>
+              </Button>
             </div>
           </div>
         )}
@@ -146,13 +146,13 @@ const ChatForm = ({
         onChange={(e) => setMessage(e.target.value)}
         onBlur={(e) => setMessage(e.target.value)}
       />
-      < AppButton
+      <Button
         type="submit"
         disabled={!message as unknown as boolean}
         className="rounded-full relative ml-auto h-full p-4 px-2 flex items-center justify-center"
       >
         <MdSend className={`text-white text-2xl`} />
-      </ AppButton>
+      </Button>
     </form>
   );
 };

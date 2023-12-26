@@ -1,5 +1,5 @@
 'use client';
-import { ErrorMsg, LoadingSpinner, ProfilePicture, AppButton } from "../..";
+import { ErrorMsg, LoadingSpinner, ProfilePicture, Button } from "../..";
 import { getUserState } from "../authentication/userSlice";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useAppDispatch, useAppSelector, useGetUsers } from "../../../lib/hooks";
@@ -10,6 +10,7 @@ import { User } from "../../../lib/interfaces";
 
 import AddContactModal from "./AddContactModal";
 import { changeSideContent } from "../../../lib/redux/reducers/sideContentReducer";
+import { Input } from "@/components/input/Input";
 
 interface AddContactsProps {}
 
@@ -68,24 +69,25 @@ const AddContacts = () => {
       )}
 
       <header className="w-full">
-        < AppButton
+        <Button
           className="w-full flex gap-2"
-          variant="transparent"
+          variant="ghost"
           onClick={() => backBtnHandler("chats")}
         >
           <AiOutlineArrowLeft className="text-lg" /> Add Contact
-        </ AppButton>
+        </Button>
       </header>
 
       <form className="w-full p-4" autoComplete="off">
         <label htmlFor="search-input">
-          <input
+          <Input
             type="text"
             id="search-input"
             value={searchVal}
             onChange={searchChangeHandler}
             placeholder="Search"
             className="text p-2 px-4 w-full rounded-full bg-secondary"
+            style={{color: 'black'}}
           />
         </label>
       </form>
@@ -97,8 +99,8 @@ const AddContacts = () => {
       >
         {users?.length !== 0 &&
           users?.map((user: User, i: number) => (
-            < AppButton
-              variant="transparent"
+            <Button
+              variant="ghost"
               key={i}
               onClick={() => contactClickHandler(user)}
               className="w-full flex gap-4"
@@ -112,7 +114,7 @@ const AddContacts = () => {
                 <p className="text-md">{user.displayName}</p>
                 <p className="text-muted text-sm ">{user.bio}</p>
               </div>
-            </ AppButton>
+            </Button>
           ))}
 
         {isPending && <LoadingSpinner msg="fetching users..." />}

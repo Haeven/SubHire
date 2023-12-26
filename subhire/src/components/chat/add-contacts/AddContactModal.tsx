@@ -1,4 +1,4 @@
-import { ProfilePicture, AppButton } from "@/components";
+import { ProfilePicture, Button } from "@/components";
 
 import { User } from "@/lib/interfaces";
 import { useState } from "react";
@@ -75,22 +75,22 @@ const AddContactModal = ({
         {isContacted(recipient.uid) ? (
           <h1 className="text-green-500 text-center">Already in contact.</h1>
         ) : (
-          < AppButton
+          <Button
             onClick={addContactBtnHandler}
             disabled={isPending}
             className="w-full flex justify-center py-1"
           >
             {isPending ? "Adding..." : "Add Contact"}
-          </ AppButton>
+          </Button>
         )}
-        < AppButton
-          variant="transparent"
+        <Button
+          variant="ghost"
           onClick={cancelBtnHandler}
           disabled={isPending}
           className="w-full flex justify-center border border-muted-light/50 dark:border-muted-dark/50 py-1"
         >
           Cancel
-        </ AppButton>
+        </Button>
       </footer>
     </aside>
   );

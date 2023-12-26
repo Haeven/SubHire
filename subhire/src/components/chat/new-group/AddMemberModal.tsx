@@ -1,5 +1,5 @@
 import { no_results } from "@/lib/assets/images";
-import { ErrorMsg, LoadingSpinner, ProfilePicture, AppButton } from "@/components";
+import { ErrorMsg, LoadingSpinner, ProfilePicture, Button } from "@/components";
 import { getUserState } from "../authentication/userSlice";
 import { useAppSelector, useGetUsers } from "@/lib/hooks";
 import { User } from "@/lib/interfaces";
@@ -77,13 +77,13 @@ const AddMemberModal = ({
   return (
     <div className="w-72 h-full flex flex-col gap-4">
       <div className="flex gap-1 items-center">
-        < AppButton
-          variant="transparent"
+        <Button
+          variant="ghost"
           onClick={() => setShowModal(false)}
           className="w-fit flex gap-2"
         >
           <AiOutlineArrowLeft className="text-xl" />
-        </ AppButton>
+        </Button>
         <h1 className="text-xl text-center justify-self-center">Add Members</h1>
       </div>
       <form className="w-full" autoComplete="off">
@@ -139,9 +139,9 @@ const AddMemberModal = ({
           />
         )}
       </ul>
-      < AppButton onClick={handleAddMembersBtn} className="mt-2">
+      <Button onClick={handleAddMembersBtn} className="mt-2">
         Done
-      </ AppButton>
+      </Button>
     </div>
   );
 };
