@@ -40,7 +40,7 @@ const SettingsContainer = () => {
         < AppButton
           variant="transparent"
           className="relative group w-full"
-          onClick={() => dispatch(toggleDarkmode())}
+          onClick={() => dispatch(() => ({type:'toggleDarkmode', payload: false}))}
         >
           <HiOutlineMoon className="text-muted text-2xl" />
           Darkmode

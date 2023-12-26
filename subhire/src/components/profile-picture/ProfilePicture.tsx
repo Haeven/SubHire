@@ -22,7 +22,7 @@ const ProfilePicture = ({
   const handleImageError = (
     e: React.SyntheticEvent<HTMLImageElement, Event>
   ) => {
-    e.target.src = DEFAULT_PROFILE_IMAGE;
+    // e.target.src = DEFAULT_PROFILE_IMAGE; TODO: Expand error handling here
   };
 
   const getSizeClass = (size: sizesType) => {
