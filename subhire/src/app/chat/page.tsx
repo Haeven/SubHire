@@ -4,7 +4,7 @@ import { ChatBox } from "@/components/features/conversation";
 import { ErrorMsg } from "@/components";
 import { start_messaging_img } from "@/lib/assets/images";
 import { useAppSelector } from "@/lib/hooks";
-import { getChatState } from "@/components/features/inbox/chatReducer";
+import { getChatState } from "@/components/chat/inbox/chatReducer";
 import { AnimatePresence, motion } from "framer-motion";
 import { VARIANTS_MANAGER } from "@/lib/redux/setup/variants-manager";
 

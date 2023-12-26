@@ -10,13 +10,13 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { LoadingSpinner, Toast } from "@/components";
 import { Providers } from '@/lib/redux/provider';
-import { getUserState } from "@/components/features/authentication/userSlice";
+import { getUserState } from "@/components/chat/authentication/userSlice";
 const inter = Inter({ subsets: ['latin'] })
 import {
   enableDarkmode,
   getThemeState,
   toggleDarkmode,
-} from "@/components/features/sidebar/themeSlice";
+} from "@/components/chat/sidebar/themeSlice";
 
 export const metadata: Metadata = {
   title: 'SubHire',
