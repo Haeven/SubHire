@@ -104,7 +104,7 @@ const ChatForm = ({
               <Button
                 onClick={handleSendImage}
                 className="py-1"
-                variant="contained"
+                variant="destructive"
               >
                 Send
               </Button>
