@@ -19,7 +19,7 @@ const SettingsContainer = () => {
     dispatch(resetChat());
   };
 
-  const backBtnHandler = (content: string) => {
+  const backBtnHandler = (content: any) => {
     dispatch(changeSideContent({ content }));
   };
 

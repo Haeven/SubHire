@@ -1,4 +1,5 @@
 export default interface User {
+  groupName?: string;
   isUser: true;
   isGroup: false;
   uid: string;

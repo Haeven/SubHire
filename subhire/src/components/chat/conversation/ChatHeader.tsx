@@ -49,7 +49,7 @@ const ChatHeader = ({ recipient }: ChatHeaderProps) => {
         </button>
         <div className="flex flex-col gap-0">
           <h2 className="text text-xl">
-            {recipient.displayName || recipient.groupName}
+            {recipient.displayName || recipient?.groupName}
           </h2>
           {/* Disabled for now */}
           {/* {!isGroup && (

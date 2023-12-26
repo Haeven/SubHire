@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid";
 import { createToast } from "@/toastSlice";
 import { useState } from "react";
 import { changeSideContent } from "@/lib/redux/reducers/sideContentReducer";
-import { GroupChat, GroupChatMock, UserChat, UserGroupChat } from "@/lib/interfaces";
+import { GroupChat, UserChat, UserGroupChat } from "@/lib/interfaces";
 
 type groupInfoParams = {
   ownerUID: string;
@@ -32,65 +32,65 @@ const useCreateGroup = () => {
 
       const groupChatID = uuid();
 
-      const groupChatRef = doc(db, "groupChats", groupChatID);
-      const groupConversationRef = doc(db, "chats", groupChatID);
-      const currentUserChatDocRef = doc(db, "userChats", ownerUID);
+      // const groupChatRef = doc(db, "groupChats", groupChatID);
+      // const groupConversationRef = doc(db, "chats", groupChatID);
+      // const currentUserChatDocRef = doc(db, "userChats", ownerUID);
 
-      await setDoc(groupConversationRef, {
-        messages: [],
-      });
+      // await setDoc(groupConversationRef, {
+      //   messages: [],
+      // });
 
-      const groupChatInfo: GroupChat = {
-        isGroup: true,
-        groupID: groupChatID,
-        groupName: groupName,
-        ownerUID,
-        groupAdmins: [ownerUID],
-        photoURL: photoURL,
-        membersID: [...membersID, ownerUID],
-        dateCreated: Timestamp.now(),
-        lastMessage: {
-          message: "Group Created.",
-          date: Timestamp.now(),
-        },
-      };
+      // const groupChatInfo: GroupChat = {
+      //   isGroup: true,
+      //   groupID: groupChatID,
+      //   groupName: groupName,
+      //   ownerUID,
+      //   groupAdmins: [ownerUID],
+      //   photoURL: photoURL,
+      //   membersID: [...membersID, ownerUID],
+      //   dateCreated: Timestamp.now(),
+      //   lastMessage: {
+      //     message: "Group Created.",
+      //     date: Timestamp.now(),
+      //   },
+      // };
 
-      await setDoc(groupChatRef, groupChatInfo);
+      // await setDoc(groupChatRef, groupChatInfo);
 
-      const updateUserChatInfo: GroupChatMock = {
-        active: false,
-        unread: false,
-        unreadMsgCount: 0,
-        isGroup: true,
-        groupID: groupChatID,
-        lastMessage: {
-          message: "Group Created.",
-          date: Timestamp.now(),
-        },
-      };
+      // const updateUserChatInfo: GroupChatMock = {
+      //   active: false,
+      //   unread: false,
+      //   unreadMsgCount: 0,
+      //   isGroup: true,
+      //   groupID: groupChatID,
+      //   lastMessage: {
+      //     message: "Group Created.",
+      //     date: Timestamp.now(),
+      //   },
+      // };
 
-      await updateDoc(currentUserChatDocRef, {
-        [groupChatID]: updateUserChatInfo,
-      });
+      // await updateDoc(currentUserChatDocRef, {
+      //   [groupChatID]: updateUserChatInfo,
+      // });
 
-      const userGroupChatInfo: UserGroupChat = {
-        groupID: groupChatID,
-        isGroup: true,
-        active: false,
-        unread: false,
-        unreadMsgCount: 0,
-        lastMessage: {
-          message: "Group Chat Created.",
-          date: Timestamp.now(),
-        },
-      };
+      // const userGroupChatInfo: UserGroupChat = {
+      //   groupID: groupChatID,
+      //   isGroup: true,
+      //   active: false,
+      //   unread: false,
+      //   unreadMsgCount: 0,
+      //   lastMessage: {
+      //     message: "Group Chat Created.",
+      //     date: Timestamp.now(),
+      //   },
+      // };
 
-      membersID.forEach(async (id: string) => {
-        const userChatsDocRef = doc(db, "userChats", id);
-        await updateDoc(userChatsDocRef, {
-          [groupChatID]: userGroupChatInfo,
-        });
-      });
+      // membersID.forEach(async (id: string) => {
+      //   const userChatsDocRef = doc(db, "userChats", id);
+      //   await updateDoc(userChatsDocRef, {
+      //     [groupChatID]: userGroupChatInfo,
+      //   });
+      // });
 
       dispatch(createToast("Group created"));
       dispatch(changeSideContent({ content: "chats" }));
