@@ -47,7 +47,7 @@ const ChatsContainer = () => {
               variant="transparent"
               className="relative group z-10 py-3 px-3"
               onClick={() =>
-                dispatch(changeSideContent({ content: "addcontacts" }))
+                dispatch(changeSideContent({ content: "addcontact" }))
               }
             >
               <MdPersonAdd className="text-muted text-2xl" />
@@ -63,7 +63,7 @@ const ChatsContainer = () => {
               }
             >
               <MdGroupAdd className="text-muted text-2xl" />
-              < AppTooltip tip="New Group" position="bottom" />
+              < AppTooltip tip="New Team" position="bottom" />
             </ AppButton>
           </li>
         </ul>
@@ -89,7 +89,7 @@ const ChatsContainer = () => {
           <ErrorMsg
             img={inbox_empty}
             msg="Your inbox is empty"
-            subMsg="Find a contact in AddContacts section."
+            subMsg="Find a contact in Add Contact section."
           />
         )}
 

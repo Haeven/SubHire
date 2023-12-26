@@ -16,7 +16,6 @@ const ErrorMsg = ({ img, msg, subMsg, className }: ErrorMsgProps) => {
       variants={VARIANTS_MANAGER}
       animate="fade-in"
     >
-      <img alt="Profile pic" src={img} className="w-64 md:w-96" />
       <figcaption className="flex flex-col gap-2 text-center">
         <h1 className="text text-xl max-w-md ">{msg}</h1>
         <p className="text-muted text-sm ">{subMsg}</p>

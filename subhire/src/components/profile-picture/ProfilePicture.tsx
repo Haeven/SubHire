@@ -39,12 +39,13 @@ const ProfilePicture = ({
   };
 
   return (
-    <div className={`${className} relative bg-transparent shrink-0`}>
+    <div className={`${className} relative shrink-0`}>
       <div
         className={`${onlineClass} p-1.5 rounded-full absolute right-0 bottom-0`}
       ></div>
       <img
         src={photoURL || ""}
+        alt="profile photo"
         onError={handleImageError}
         className={`${getSizeClass(size)} object-cover rounded-[50%]`}
       />

@@ -1,12 +1,11 @@
 import {
-  BiLogOut,
   BiUser,
+  BiLogOut,
   BiMessageSquareDetail,
   BiMoon,
   BiSun,
 } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
-import { RiContactsLine } from "react-icons/ri";
 
 import { AppTooltip, AppButton, ProfilePicture } from "@/components";
 
@@ -22,10 +21,9 @@ import {
 } from "@/lib/redux/reducers/sideContentReducer";
 
 const SIDEBAR_PAGE_BUTTONS = [
-  { name: "chats", icon: BiMessageSquareDetail, content: "chats" },
-  { name: "add contacts", icon: RiContactsLine, content: "addcontacts" },
-  { name: "profile", icon: BiUser, content: "profile" },
-  { name: "settings", icon: FiSettings, content: "settings" },
+  { name: "Chats", icon: BiMessageSquareDetail, content: "chats" },
+  { name: "Add Contact", icon: BiUser, content: "addcontact" },//TODO: Make Add Contact page show list of contacts before search input
+  { name: "Settings", icon: FiSettings, content: "Settings" },
 ];
 
 interface SidebarProps {}
@@ -37,10 +35,10 @@ const Sidebar = () => {
 
   const dispatch = useAppDispatch();
 
-  const sidebarBtnHandler = (content: string) => {
+  const sidebarBtnHandler = (content: any) => {
     content = content.replace(" ", "");
 
-    if (content === "profile") {
+    if (content === "Settings") {
       dispatch(showUserProfile({ userProfileData: currentUser }));
       return;
     }
@@ -48,7 +46,7 @@ const Sidebar = () => {
     dispatch(changeSideContent({ content }));
   };
 
-  const darkmodeClickHandler = () => dispatch(toggleDarkmode());
+  const darkmodeClickHandler = () => dispatch(() => ({type:'toggleDarkmode', payload: false}));
 
   const handleSignOut = () => {
     dispatch(logout());
@@ -59,7 +57,7 @@ const Sidebar = () => {
     <>
       <nav className="relative hidden p-3 py-4 w-fit bg-secondary md:flex md:flex-col gap-4 pt-10">
         <button
-          onClick={() => sidebarBtnHandler("profile")}
+          onClick={() => sidebarBtnHandler("Settings")}
           className="text relative group flex justify-center gap-2 items-center px-4 border-b border-main pb-4"
         >
           <ProfilePicture
@@ -83,7 +81,7 @@ const Sidebar = () => {
                 onClick={() => sidebarBtnHandler(obj.content)}
               >
                 <Icon className={` text-muted text-2xl`} />
-                < AppTooltip tip={obj.content} position="right" />
+                < AppTooltip tip={obj.name} position="right" />
                 {sidebarContent === obj.content && (
                   <div className="p-0.5 h-10 w-1 -left-3 top-1/2 -translate-y-1/2 absolute bg-primary-main rounded-full" />
                 )}
@@ -135,7 +133,7 @@ const Sidebar = () => {
                 onClick={() => sidebarBtnHandler(obj.content)}
               >
                 <Icon className={` text-muted text-2xl`} />
-                < AppTooltip tip={obj.content} position="top" />
+                < AppTooltip tip={obj.name} position="top" />
                 {sidebarContent === obj.content && (
                   <div className="p-0.5 h-1 w-10 left-1/2 -bottom-2 -translate-x-1/2 absolute bg-primary-main rounded-full" />
                 )}

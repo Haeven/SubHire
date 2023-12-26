@@ -5,15 +5,16 @@ import { VARIANTS_MANAGER } from "@/lib/redux/setup/variants-manager";
 import SettingsContainer from "../settings/SettingsContainer";
 import { useAppSelector } from "@/lib/hooks";
 import { getSideContent } from "@/lib/redux/reducers/sideContentReducer";
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import { LoadingSpinner } from "@/components";
+import dynamic from "next/dynamic";
 
-const AddContacts = lazy(() => import("../add-contacts/AddContacts"));
+const AddContacts = dynamic(() => import("../add-contacts/AddContacts"));
 
-const NewGroupContainer = lazy(
+const NewGroupContainer = dynamic(
   () => import("../new-group/NewGroupContainer")
 );
-const ProfileContainer = lazy(
+const ProfileContainer = dynamic(
   () => import("../profile/ProfileContainer")
 );
 
@@ -44,7 +45,7 @@ const SideContent = () => {
               <ChatsContainer />
             </motion.div>
           )}
-          {sidebarContent === "addcontacts" && (
+          {sidebarContent === "addcontact" && (
             <motion.div
               key="add-contacts"
               className="absolute w-full h-full overflow-hidden"
@@ -68,7 +69,7 @@ const SideContent = () => {
               <ProfileContainer />
             </motion.div>
           )}
-          {sidebarContent === "settings" && (
+          {/* {sidebarContent === "settings" && (
             <motion.div
               key="add-contacts"
               className="absolute w-full h-full"
@@ -79,10 +80,10 @@ const SideContent = () => {
             >
               <SettingsContainer />
             </motion.div>
-          )}
+          )} */}
           {sidebarContent === "new-group" && (
             <motion.div
-              key="add-contacts"
+              key="new-group"
               className="absolute w-full h-full overflow-y-scroll scrollbar-hide"
               variants={VARIANTS_MANAGER}
               initial="slide-from-left"

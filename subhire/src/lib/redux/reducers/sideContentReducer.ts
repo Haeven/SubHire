@@ -12,7 +12,7 @@ const initialState: InitialStateType = {
 };
 
 type changeSideTypes = {
-  content: "chats" | "addcontacts" | "profile" | "settings" | "new-group";
+  content: "chats" | "addcontact" | "settings" | "new-group";
 };
 type showUserProfileType = { userProfileData: User };
 

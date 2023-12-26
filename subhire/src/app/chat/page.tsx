@@ -33,7 +33,7 @@ const Chat = () => {
           <ErrorMsg
             className="hidden md:flex"
             img={start_messaging_img}
-            msg="Keep Up Accountability with SubHire"
+            msg="Keep Up With Your Contract Employees with SubHire"
             subMsg="Select a chat in your inbox to start messaging."
           />
         )}

@@ -69,6 +69,9 @@ export default function RootLayout({
               )} */}
             </Suspense>
           </StrictMode>
+          <div id="root"></div>
+          <div id="toast"></div>
+          <div id="modal"></div>
         </body>
       </html>
     // </Providers>

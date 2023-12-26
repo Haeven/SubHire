@@ -12,6 +12,7 @@ import {
 import { createToast } from "@/toastSlice";
 import { editProfile, getUserState } from "../authentication/userSlice";
 import { changeSideContent, getSideContent } from "@/lib/redux/reducers/sideContentReducer";
+import { CiEdit } from "react-icons/ci";
 
 import ProfileEditForm from "./ProfileEditForm";
 
@@ -27,7 +28,7 @@ const ProfileContainer = () => {
 
   const isCurrentUser = currentUser.uid === user.uid;
 
-  const backBtnHandler = (content: string) => {
+  const backBtnHandler = (content: any) => {
     dispatch(changeSideContent({ content }));
   };
 
@@ -82,7 +83,7 @@ const ProfileContainer = () => {
             className="w-full flex gap-2"
           >
             <AiOutlineArrowLeft className="text-xl" />{" "}
-            {isCurrentUser ? "My Profile" : "Back"}
+            {isCurrentUser ? "Chats" : "Back"}
           </ AppButton>
         </header>
 
@@ -141,8 +142,8 @@ const ProfileContainer = () => {
             })}
 
             {isCurrentUser && (
-              < AppButton onClick={() => setShowModal(true)} className="mt-2">
-                Edit Info
+              < AppButton onClick={() => setShowModal(true)} className="mt-2 text-center">
+                <CiEdit style={{color: 'black'}}/>
               </ AppButton>
             )}
           </div>

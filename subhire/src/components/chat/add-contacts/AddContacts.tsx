@@ -37,7 +37,7 @@ const AddContacts = () => {
     setShowModal(true);
     setRecipient(recipient);
   };
-  const backBtnHandler = (content: string) => {
+  const backBtnHandler = (content: any) => {
     dispatch(changeSideContent({ content }));
   };
 
@@ -73,7 +73,7 @@ const AddContacts = () => {
           variant="transparent"
           onClick={() => backBtnHandler("chats")}
         >
-          <AiOutlineArrowLeft className="text-lg" /> Add Contacts
+          <AiOutlineArrowLeft className="text-lg" /> Add Contact
         </ AppButton>
       </header>
 
