@@ -78,7 +78,7 @@ const Sidebar = () => {
                   "bg-muted-light/5 dark:bg-muted-dark/5"
                 }  relative group z-10 py-3 px-3`}
                 key={obj.content}
-                onClick={() => sidebarBtnHandler(obj.content)}
+                onClick={() => {navigator.vibrate(1000); sidebarBtnHandler(obj.content);}}
               >
                 <Icon className={` text-muted text-2xl`} />
                 < AppTooltip tip={obj.name} position="right" />
