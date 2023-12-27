@@ -30,15 +30,19 @@ function SignUp({ /* props */ }) {
             <h1 >How will you use SubHire?</h1>
             <Tabs defaultValue="account" className="w-[400px]">
                 <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="account">Account</TabsTrigger>
-                    <TabsTrigger value="password">Password</TabsTrigger>
+                    <TabsTrigger value="account">I'm a business</TabsTrigger>
+                    <TabsTrigger value="password">I'm a contractor</TabsTrigger>
+                    {/* <TabsTrigger value="password">I'm an employee</TabsTrigger> TODO: Eventually add invite employee, for compliance HR docs etc. purposes */} 
                 </TabsList>
                 <TabsContent value="account">
                     <Card>
                     <CardHeader>
-                        <CardTitle>Account</CardTitle>
+                        <CardTitle>Sign up as an organization</CardTitle>
                         <CardDescription>
-                        Make changes to your account here. Click save when you're done.
+                            - Search through a database of verified professionals
+                            - AI matches you a list of the potential best contractors for your project {/* ¿(requirements)? */}
+                            - Easily onboard new hires, manage payouts and invoices
+                            - Stay compliant with local tax and labor laws
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
@@ -56,12 +60,15 @@ function SignUp({ /* props */ }) {
                     </CardFooter>
                     </Card>
                 </TabsContent>
-                <TabsContent value="password">
+                <TabsContent value="contractor">
                     <Card>
                     <CardHeader>
-                        <CardTitle>Password</CardTitle>
+                        <CardTitle>Contractor</CardTitle>
                         <CardDescription>
-                        Change your password here. After saving, you'll be logged out.
+                        - Discover projects that match your skills and experience
+                        - Bid to secure contracts at your preferred rate
+                        - Build your Boost level by expanding portfolio and securing contracts
+                        - Receive payouts according to your preferences
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">

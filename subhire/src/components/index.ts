@@ -1,5 +1,5 @@
 import InputForm from "./input-form";
-import {Form} from "./input-form";
+import Form from "./form";
 import Toast from "./toast";
 import Modal from "./modal";
 import {Button} from "./button";
